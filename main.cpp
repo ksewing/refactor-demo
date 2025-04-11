@@ -24,28 +24,6 @@ void printVector(vector<int> v){
     cout << endl;
 }
 
-/* NOTE: I tried to write my own vector sorting function but I just couldn't get
-it to work. I don't quite understand what I was reading about how I have to set
-iterator types using a pointer. I'm going to admit defeat and use <algorithm>
-to sort this vector. I would love some feedback on what I'm doing wrong here.
-
-// Vector sorting function. "Makin' Medians EZ" since 2024.
-void sortVec(vector<int> &v) {  // Pass by reference to sort the input vector
-    int min;
-    auto minpos = v.begin();
-    for (int i = 0; i < v.size(); ++i) {
-        min = 201;
-        for (int j = i; j < v.size(); ++j) {
-            if (v.at(j) <= min) {
-                min = v.at(j);
-                *minpos = j;
-            }
-        }
-        v.erase(minpos);
-        v.insert(v.begin(), min);
-    }
-} */
-
 void barGraph(vector<int> v) {
     int count = 0;
     int currNum = v.at(0);
@@ -121,3 +99,25 @@ int main()
     
     return 0;
 }
+
+/* NOTE: I tried to write my own vector sorting function but I just couldn't get
+it to work. I don't quite understand what I was reading about how I have to set
+iterator types using a pointer. I'm going to admit defeat and use <algorithm>
+to sort this vector. I would love some feedback on what I'm doing wrong here.
+
+// Vector sorting function. "Makin' Medians EZ" since 2024.
+void sortVec(vector<int> &v) {  // Pass by reference to sort the input vector
+    int min;
+    auto minpos = v.begin();
+    for (int i = 0; i < v.size(); ++i) {
+        min = 201;
+        for (int j = i; j < v.size(); ++j) {
+            if (v.at(j) <= min) {
+                min = v.at(j);
+                *minpos = j;
+            }
+        }
+        v.erase(minpos);
+        v.insert(v.begin(), min);
+    }
+} */
