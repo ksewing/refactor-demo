@@ -16,59 +16,10 @@ Date: 1 November 2024
 #include <algorithm>
 using namespace std;
 
-// Vector printing function.  Provided for convenience for intermediate testing.
-void printVector(vector<int> v){
-    for (int e: v){
-        cout << e << " ";
-    }
-    cout << endl;
-}
-
-
-void PrintBarGraph(vector<int> v) {
-    int count = 0;
-    int currNum = v.at(0);
-    if (v.size() == 0) {
-        // Handle an edge case.
-        cout << "ERROR: Empty vector! Aborting.\n";
-        return;
-    }
-    for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
-        for (int j : v) if (j == i) count++;
-
-
-        // print a bar in the graph.
-        cout << i << ": ";
-        for (int k = 0; k < count; ++k) cout << "|"; // j was OK, but this is easy to read
-        cout << endl;
-        count = 0;
-    }
-    // God, this went so much better than my first attempt at this function.
-}
-
-void stats(vector<int> v) {
-    int sum = 0;
-    int mode = v.at(0); // Already handled empty vector error in barGraph()
-    int modeCount = 0;
-    int modeValMax = 0;
-    int modeCountMax = 0;
-    for (unsigned int i = 0; i < v.size(); ++i) {
-        sum += v.at(i);
-        if (v.at(i) == mode) modeCount++;
-        else {
-            if (modeCount >= modeCountMax) {
-                if (i != v.size() - 1) modeValMax = v.at(i - 1);
-                else modeValMax = v.at(i);
-                modeCountMax = modeCount;
-            }
-            mode = v.at(i);
-            modeCount = 1;
-        }
-    }
-    printf("Mean: %.2f\n", (double) sum / v.size());
-    printf("Median: %d\n", v.at(v.size() / 2));
-    printf("Mode: %d\n", modeValMax);
-}
+//function protottypes
+void printVector(vector<int> v);
+void PrintBarGraph(vector<int> v);
+void stats(vector<int> v);
 
 int main()
 {
@@ -98,4 +49,55 @@ int main()
     } while(yesNo == 'Y' || yesNo == 'y');
     
     return 0;
+}
+
+// Vector printing function.  Provided for convenience for intermediate testing.
+void printVector(vector<int> v){
+    for (int e: v){
+        cout << e << " ";
+    }
+    cout << endl;
+}
+
+void PrintBarGraph(vector<int> v) {
+    int count = 0;
+    int currNum = v.at(0);
+    if (v.size() == 0) {
+        // Handle an edge case.
+        cout << "ERROR: Empty vector! Aborting.\n";
+        return;
+    }
+    for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
+        for (int j : v) if (j == i) count++;
+
+        // print a bar in the graph.
+        cout << i << ": ";
+        for (int k = 0; k < count; ++k) cout << "|";
+        cout << endl;
+        count = 0;
+    }
+}
+
+void stats(vector<int> v) {
+    int sum = 0;
+    int mode = v.at(0); // Already handled empty vector error in barGraph()
+    int modeCount = 0;
+    int modeValMax = 0;
+    int modeCountMax = 0;
+    for (unsigned int i = 0; i < v.size(); ++i) {
+        sum += v.at(i);
+        if (v.at(i) == mode) modeCount++;
+        else {
+            if (modeCount >= modeCountMax) {
+                if (i != v.size() - 1) modeValMax = v.at(i - 1);
+                else modeValMax = v.at(i);
+                modeCountMax = modeCount;
+            }
+            mode = v.at(i);
+            modeCount = 1;
+        }
+    }
+    printf("Mean: %.2f\n", (double) sum / v.size());
+    printf("Median: %d\n", v.at(v.size() / 2));
+    printf("Mode: %d\n", modeValMax);
 }
