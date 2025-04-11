@@ -81,7 +81,7 @@ int main()
         do {
             cin >> nextInt;
             if (nextInt >= 0 && nextInt <= 200) dataVec.push_back(nextInt);
-            else if (nextInt != -1) {   // Avoid error message if entry is -1
+            else if (nextInt != -1) {
                 cout << "Invalid entry: " << nextInt << ". Skipping this entry.\n";
             }
         } while (nextInt != -1);
