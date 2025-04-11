@@ -13,7 +13,10 @@ Date: 1 November 2024
 #include <iostream>
 #include <cctype>
 #include <vector>
-#include <algorithm> // Sorry. Had to use <algorithm>'s sort() method.
+
+// Sorry. Had to use <algorithm>'s sort() method.
+#include <algorithm> 
+
 using namespace std;
 
 // Vector printing function.  Provided for convenience for intermediate testing.
@@ -58,7 +61,9 @@ void barGraph(vector<int> v) {
 
 void stats(vector<int> v) {
     int sum = 0;
-    int mode = v.at(0); // Already handled empty vector error in barGraph()
+    
+    // Already handled empty vector error in barGraph()
+    int mode = v.at(0); 
     int modeCount = 0;
     int modeValMax = 0;
     int modeCountMax = 0;
@@ -105,14 +110,17 @@ int main()
             
             if (nextInt >= 0 && nextInt <= 200) {
                 dataVec.push_back(nextInt);
-            } else if (nextInt != -1) {   // Avoid error message if entry is -1
+            }
+            // Avoid error message if entry is -1
+            else if (nextInt != -1) {   
                 cout << "Invalid entry: " << nextInt << ". Skipping this entry.\n";
             }
         } while (nextInt != -1);
         
         // Call functions to process data
         if (dataVec.size() > 0) {
-            sort(dataVec.begin(), dataVec.end());   // Makes stats functions easier.
+            // Makes stats functions easier.
+            sort(dataVec.begin(), dataVec.end());
         }
         
         barGraph(dataVec);
