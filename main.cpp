@@ -13,7 +13,7 @@ Date: 1 November 2024
 #include <iostream>
 #include <cctype>
 #include <vector>
-#include <algorithm> // Sorry. Had to use <algorithm>'s sort() method.
+#include <algorithm>
 using namespace std;
 
 // Vector printing function.  Provided for convenience for intermediate testing.
