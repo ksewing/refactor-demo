@@ -37,7 +37,7 @@ void barGraph(vector<int> v) {
          
         // Now, print a bar in the graph.
         cout << i << ": ";
-        for (int k = 0; k < count; ++k) cout << "|"; // j was OK, but this is easy to read
+        for (int k = 0; k < count; ++k) cout << "|"; 
         cout << endl;
         count = 0;
     }
@@ -46,7 +46,7 @@ void barGraph(vector<int> v) {
 
 void stats(vector<int> vector_data) {
     int sum = 0;
-    int mode = vector_data.at(0); // Already handled empty vector error in barGraph()
+    int mode = vector_data.at(0); 
     int modeCount = 0;
     int modeValMax = 0;
     int modeCountMax = 0;
@@ -86,7 +86,7 @@ int main()
             }
         } while (nextInt != -1);
         // Call functions to process data
-        if (dataVec.size() > 0) sort(dataVec.begin(), dataVec.end());   // Makes stats functions easier.
+        if (dataVec.size() > 0) sort(dataVec.begin(), dataVec.end());
         barGraph(dataVec);
         stats(dataVec);
         dataVec.clear();
