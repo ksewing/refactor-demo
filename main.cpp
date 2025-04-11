@@ -54,8 +54,13 @@ void barGraph(vector<int> v) {
         cout << "ERROR: Empty vector! Aborting.\n";
         return;
     }
-    for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
-        for (int j : v) if (j == i) count++;
+    unordered_map<int, int> freq;
+    for (int num : v) { 
+        freq[num]++;
+    }
+    
+    //for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
+        //for (int j : v) if (j == i) count++;
         // Brevity is the soul of wit.
         // (AKA *I* know what this is doing...)
         
