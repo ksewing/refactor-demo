@@ -8,7 +8,7 @@ stored as vectors. I'm coding these bar graphs on a bar stool.
 
 Author: Benjamin DeVore
 Date: 1 November 2024
-
+//////new commit
 *******************************************************************************/
 #include <iostream>
 #include <cctype>
