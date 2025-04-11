@@ -21,25 +21,28 @@ void printVector(vector<int> v){
     for (int e: v){
         cout << e << " ";
     }
+    
     cout << endl;
 }
 
 void barGraph(vector<int> v) {
     int count = 0;
     int currNum = v.at(0);
+    
     if (v.size() == 0) {
         // Handle an edge case.
         cout << "ERROR: Empty vector! Aborting.\n";
         return;
     }
+    
     for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
         for (int j : v) if (j == i) count++;
-        // Brevity is the soul of wit.
-        // (AKA *I* know what this is doing...)
         
         // Now, print a bar in the graph.
         cout << i << ": ";
+        
         for (int k = 0; k < count; ++k) cout << "|"; // j was OK, but this is easy to read
+        
         cout << endl;
         count = 0;
     }
@@ -52,8 +55,10 @@ void stats(vector<int> v) {
     int modeCount = 0;
     int modeValMax = 0;
     int modeCountMax = 0;
+    
     for (unsigned int i = 0; i < v.size(); ++i) {
         sum += v.at(i);
+        
         if (v.at(i) == mode) modeCount++;
         else {
             if (modeCount >= modeCountMax) {
@@ -61,10 +66,12 @@ void stats(vector<int> v) {
                 else modeValMax = v.at(i);
                 modeCountMax = modeCount;
             }
+            
             mode = v.at(i);
             modeCount = 1;
         }
     }
+    
     printf("Mean: %.2f\n", (double) sum / v.size());
     printf("Median: %d\n", v.at(v.size() / 2));
     printf("Mode: %d\n", modeValMax);
@@ -75,6 +82,7 @@ int main()
     vector<int> dataVec;
     int nextInt;
     char yesNo;
+    
     do {
         cout << "Enter your data set of positive integers." << endl;
         cout << "Enter -1 as the final number to indicate the end of the data set." << endl;
@@ -87,8 +95,10 @@ int main()
                 cout << "Invalid entry: " << nextInt << ". Skipping this entry.\n";
             }
         } while (nextInt != -1);
+        
         // Call functions to process data
         if (dataVec.size() > 0) sort(dataVec.begin(), dataVec.end());   // Makes stats functions easier.
+        
         barGraph(dataVec);
         stats(dataVec);
         dataVec.clear();
