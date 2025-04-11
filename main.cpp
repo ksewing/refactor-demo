@@ -17,8 +17,8 @@ Date: 1 November 2024
 using namespace std;
 
 // Vector printing function.  Provided for convenience for intermediate testing.
-void printVector(vector<int> v){
-    for (int e: v){
+void printVector(vector<int> v) {
+    for (int e: v) {
         cout << e << " ";
     }
     
@@ -36,12 +36,19 @@ void barGraph(vector<int> v) {
     }
     
     for (unsigned int i = v.at(0); i <= v.at(v.size() - 1); ++i) {
-        for (int j : v) if (j == i) count++;
+        for (int j : v) {
+            if (j == i) {
+                count++;
+            }
+        }
         
         // Now, print a bar in the graph.
         cout << i << ": ";
         
-        for (int k = 0; k < count; ++k) cout << "|"; // j was OK, but this is easy to read
+        // j was OK, but this is easy to read
+        for (int k = 0; k < count; ++k) {
+            cout << "|"; 
+        }
         
         cout << endl;
         count = 0;
@@ -59,11 +66,16 @@ void stats(vector<int> v) {
     for (unsigned int i = 0; i < v.size(); ++i) {
         sum += v.at(i);
         
-        if (v.at(i) == mode) modeCount++;
-        else {
+        if (v.at(i) == mode) {
+            modeCount++;
+        } else {
             if (modeCount >= modeCountMax) {
-                if (i != v.size() - 1) modeValMax = v.at(i - 1);
-                else modeValMax = v.at(i);
+                if (i != v.size() - 1) {
+                    modeValMax = v.at(i - 1);
+                } else {
+                    modeValMax = v.at(i);
+                }
+                
                 modeCountMax = modeCount;
             }
             
@@ -90,14 +102,18 @@ int main()
         // Take data from user input
         do {
             cin >> nextInt;
-            if (nextInt >= 0 && nextInt <= 200) dataVec.push_back(nextInt);
-            else if (nextInt != -1) {   // Avoid error message if entry is -1
+            
+            if (nextInt >= 0 && nextInt <= 200) {
+                dataVec.push_back(nextInt);
+            } else if (nextInt != -1) {   // Avoid error message if entry is -1
                 cout << "Invalid entry: " << nextInt << ". Skipping this entry.\n";
             }
         } while (nextInt != -1);
         
         // Call functions to process data
-        if (dataVec.size() > 0) sort(dataVec.begin(), dataVec.end());   // Makes stats functions easier.
+        if (dataVec.size() > 0) {
+            sort(dataVec.begin(), dataVec.end());   // Makes stats functions easier.
+        }
         
         barGraph(dataVec);
         stats(dataVec);
